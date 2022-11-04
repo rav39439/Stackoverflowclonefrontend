@@ -18,7 +18,6 @@ return(
     </Router>
       */}
 <Tabl/>
-    <Form/>
   
    </div>
 
