@@ -8,14 +8,14 @@ const Newnavbar = () => {
 
 
 
-      <Link to="/Adduser">
+      {/* <Link to="/Adduser">
 
         Adduser
       </Link>
       <Link to="/data" style={{marginLeft:"50px"}}>
 
         Userdata
-      </Link>
+      </Link> */}
     
     
 </div>

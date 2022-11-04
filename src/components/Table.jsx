@@ -3,7 +3,6 @@ import {Table,Button,Modal,ModalBody,ModalFooter,ModalHeader} from 'reactstrap'
 import axios from 'axios'
 import { useState,useEffect } from 'react';
 
-import user from './data';
 
 
 
@@ -39,7 +38,7 @@ const [mydata,setmydata]=useState([])
     async function fetchData() {
  
     try {
-      const res = await axios.get("http://localhost:8800/api/users/getdata");
+      const res = await axios.get("https://datamanagementservice.onrender.com/api/users/getdata");
   
       console.log(res.data)
       
@@ -77,7 +76,7 @@ const handleUpdate=async(e)=>{
 
   
   try{
-    const res = await axios.put(`http://localhost:8800/api/users/updateuser/${e.target.children[0].children[1].value}`,updateduser );
+    const res = await axios.put(`https://datamanagementservice.onrender.com/api/users/updateuser/${e.target.children[0].children[1].value}`,updateduser );
   console.log("data is updated")
   
   res.data.map((elem,index)=>{
@@ -116,7 +115,7 @@ const newUser={
 
 }
   try {
-    const res = await axios.post("http://localhost:8800/api/users/postuser",newUser);
+    const res = await axios.post("https://datamanagementservice.onrender.com/api/users/postuser",newUser);
 
 
       console.log("request is send")
@@ -183,7 +182,7 @@ const handledelete=async(id)=>{
 
 
   try{
-    const res = await axios.delete(`http://localhost:8800/api/users/deleteuser/${id}`);
+    const res = await axios.delete(`https://datamanagementservice.onrender.com/api/users/deleteuser/${id}`);
     
     res.data.map((elem,index)=>{
       b.push(elem)
@@ -214,7 +213,7 @@ const handledelete=async(id)=>{
 
 
     try {
-      const res = await axios.post("http://localhost:8800/api/users/senddata",c);
+      const res = await axios.post("https://datamanagementservice.onrender.com/api/users/senddata",c);
   
   
        alert(res.data)
