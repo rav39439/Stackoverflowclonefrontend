@@ -1,0 +1,68 @@
+.user-submit-btn{
+    padding:14px 10px;
+    margin-bottom: 20px;
+    border: solid 1px #dbd9d9;
+    border-radius: 2px;
+}
+.edit-profile-form label input, .edit-profile-form label textarea{
+    padding: 5px;
+    margin-bottom: 20px;
+    border: solid 1px #0a95ff;
+    width: 50%;
+}
+
+.user-submit-btn:hover{
+    background-color: #0074cc;
+}
+.user-cancel-btn{
+    padding: 14px 10px;
+    color: #0a95ff;
+    background-color: transparent;
+    border: none;
+}
+.edit-profile-form label p{
+    margin: 0%;
+    padding: 3px 0px;
+}
+.edit-profile-form label h3{
+    margin: 0%;
+    padding: 3px 0px;
+}
+.edit-profile-btn{
+    padding: 8px 10px;
+    border: solid 1px #7e7e7e;
+    border-radius: 2px;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.edit-profile-title{
+    padding: 20px 0px;
+    border-bottom: solid 1px #f5f9fc;
+}
+.user-name p{
+color: #7e7e7e;
+
+}
+.user-name{
+    padding-left: 20px;
+}
+.user-details{
+    display: flex;
+    align-items: center;
+}
+.user-details-container{
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.username{
+background-color: #0074cc;   
+width: 40px;
+height: 50px;
+    font-size:50px;
+    border-radius:50%;
+     color:"white";
+}
