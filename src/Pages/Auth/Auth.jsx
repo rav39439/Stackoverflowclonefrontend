@@ -17,9 +17,8 @@ import firebase from '../../Firebase.config';
 
 
 const Auth = () => {
-
-    console.log(firebase)
-    const auth=firebase.auth()
+const auth=firebase.auth()
+   const [phone,setphone]=("")
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const [isSignup,setisSignup]=useState(false)
@@ -82,9 +81,10 @@ else{
 
 const onsigninSubmit=()=>{
 
-          if (phonenumber === "" || phonenumber.length < 10) return;
+          if (phonenumber == "" || phonenumber.length < 10) return;
+console.log(typeof(phonenumber))
         let verify = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-        auth.signInWithPhoneNumber(phonenumber, verify).then((result) => {
+        auth.signInWithPhoneNumber("+91"+phonenumber, verify).then((result) => {
             setfinal(result);
             alert("code sent")
             setOTPverify(true)
@@ -105,7 +105,9 @@ const ChangeMobile=(mobile)=>{
     console.log(mobile)
         if(mobile.length==10){
             setverify(true)
+          
         }
+        
 
 }
 
@@ -113,6 +115,7 @@ const ChangeMobile=(mobile)=>{
 
 
 const verifycode=()=>{
+    
 
                 if (otp === null || final === null)
                     return;
@@ -161,7 +164,7 @@ isSignup&&
 
  <h4>Phoneno(add +91 and then enter the phonenumber)</h4>
 
- <input value={phonenumber} name="phonenumber" id="phonenumber" onChange={(e)=>{ChangeMobile(e.target.value)}} placeholder="phone number" />
+ <input value={phonenumber}  name="phonenumber" id="phonenumber" onChange={(e)=>{ChangeMobile(e.target.value)}} placeholder="phone number" />
 
 </label>
 }
