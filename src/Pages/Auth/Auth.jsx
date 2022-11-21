@@ -57,7 +57,7 @@ if(verified){
     dispatch(login({email,password},navigate))
 }
 else{
-    alert("verify your phone  no")
+    alert("verify your phone  no then login")
 }
            
         }
@@ -120,7 +120,7 @@ const verifycode=()=>{
                     // success
 
                     setverified(true)
-                         alert("verification done")
+                         alert("verification done you can login now")
                 }).catch((err) => {
                     alert("Wrong code");
                 })
