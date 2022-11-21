@@ -9,7 +9,7 @@ import LeftSidebar from 'src/components/LeftSidebar/LeftSidebar'
 import { sendmessages } from 'src/actions/users';
 import Messagenewtab from 'src/components/Messagenewtab/Messagenewtab';
 import Mychat from 'src/components/Mychat/Mychat';
-const socket=io("http://localhost:8800", { transports: ['websocket', 'polling', 'flashsocket'] })
+const socket=io("https://stackoverflowcloneapi.onrender.com", { transports: ['websocket', 'polling', 'flashsocket'] })
 
 const Chat = () => {
    
