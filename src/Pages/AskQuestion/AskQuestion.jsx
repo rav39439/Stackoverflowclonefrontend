@@ -17,6 +17,7 @@ const AskQuestion = () => {
    const handleSubmit=(e)=>{
     e.preventDefault()
     dispatch(askQuestion({questionTitle,questionBody,questionTags,userPosted:User.result.name,userId:User.result._id},navigate))
+    alert('question is posted successfully')
    }
 
    const handleEnter=(e)=>{

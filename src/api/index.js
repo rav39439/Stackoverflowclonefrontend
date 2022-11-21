@@ -1,5 +1,6 @@
 import axios from "axios";
-const API=axios.create({baseURL:'http://localhost:8800'})
+//const API=axios.create({baseURL:'http://localhost:8800'})
+const API=axios.create({baseURL:'https://stackoverflowcloneapi.onrender.com'})
 export const logIn=(authData)=>API.post('/api/users/login',authData);
 API.interceptors.request.use((req)=>{
     if(localStorage.getItem('Profile')){

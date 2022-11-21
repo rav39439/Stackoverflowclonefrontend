@@ -109,11 +109,11 @@ var userid=currentUser?.result?._id
 
 <LeftSidebar/>
 
-<div style={{marginLeft:"300px"}}>
+<div style={{marginLeft:"300px",overflowY:scroll}}>
 
 
 
-    <div className="users" style={{backgroundColor:"blue",width:"500px"}}>
+    <div className="users" style={{width:"500px"}}>
 
     <h1>Messages</h1>
 {

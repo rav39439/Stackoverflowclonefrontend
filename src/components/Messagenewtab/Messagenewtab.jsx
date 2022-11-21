@@ -18,7 +18,7 @@ const Messagenewtab = ({to,from,name,message,newdata,time,}) => {
 
     <>
 
-    <div className='border bg-light'style={{overflowY:scroll}}>
+    <div className='border bg-light'style={{backgroundColor:"rgb(202, 167, 167)"}}>
 
 
 
@@ -29,6 +29,7 @@ const Messagenewtab = ({to,from,name,message,newdata,time,}) => {
 
 
     </div>
+    <hr />
     </>
 
 
