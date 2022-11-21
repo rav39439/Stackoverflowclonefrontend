@@ -8,6 +8,15 @@ API.interceptors.request.use((req)=>{
     }
     return req;
 })
+
+export const logIn2=(authData)=>API.post('/api/users/login2',authData);
+API.interceptors.request.use((req)=>{
+    if(localStorage.getItem('Profile')){
+        req.headers.authorization=`Bearer ${JSON.parse(localStorage.getItem('Profile')).token}`
+    }
+    return req;
+})
+
 export const fetchAllUsers=()=>API.get('/api/users/getAllUsers')
 
 

@@ -5,7 +5,7 @@ import './auth.css'
 import app from '../../Firebase.config';
 import {useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
-import { signup,login } from 'src/actions/auth'
+import { signup,login,login2} from 'src/actions/auth'
 import firebase from '../../Firebase.config';
 // import { auth } from 'firebase/auth';
 //const auth = getAuth(app);
@@ -18,7 +18,8 @@ import firebase from '../../Firebase.config';
 
 const Auth = () => {
 const auth=firebase.auth()
-   const [phone,setphone]=("")
+const [phoneno,setphoneno]=useState("")
+   const [phonelogin,setphonelogin]=useState(false)
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const [isSignup,setisSignup]=useState(false)
@@ -44,20 +45,16 @@ setisSignup(!isSignup)
             if(!name){
                 alert("Enter name to continue")
             }
-            dispatch(signup({name,email,password},navigate))
+            dispatch(signup({name,email,password,phoneno},navigate))
 
         }
         
         
         else{
 
+dispatch(login({email,password},navigate))
 
-if(verified){
-    dispatch(login({email,password},navigate))
-}
-else{
-    alert("verify your phone  no then login")
-}
+
            
         }
         
@@ -123,13 +120,22 @@ const verifycode=()=>{
                     // success
 
                     setverified(true)
-                         alert("verification done you can login now")
+
+                    dispatch(login2({phonenumber},navigate))
+                         alert(phonenumber)
                 }).catch((err) => {
                     alert("Wrong code");
                 })
 
  }
+const handlephonelogin=()=>{
+    if(phonelogin){
+        setphonelogin(false)
 
+    }else{
+        setphonelogin(true)
+    }
+}
   return (
     <div className='auth-box'>
 <section className='auth-section'>
@@ -144,22 +150,43 @@ const verifycode=()=>{
 
 <form onSubmit={(e)=>{handleSubmit(e)}}>
  {
-isSignup&&
+  (isSignup==true)&&(phonelogin==false)?
+<>
     <label htmlFor="name">
 
     <h4>name</h4>
     <input type="text" name="name" id="name" onChange={(e)=>{setName(e.target.value)}}/>
 </label>
-
+</>:<div></div>
 
    }
+
+ {
+  (isSignup==true)&&(phonelogin==false)?
+<>
+    <label htmlFor="name">
+
+    <h4>phoneno</h4>
+    <input type="text" name="phoneno" id="phoneno" onChange={(e)=>{setphoneno(e.target.value)}}/>
+</label>
+</>:<div></div>
+
+   }
+
+   {
+    (phonelogin==false)||(isSignup==true)?
+    <>
     <label htmlFor="email">
 
         <h4>Email</h4>
         <input type="text" name="email" id="email"onChange={(e)=>{setEmail(e.target.value)}}/>
     </label><br></br>
+    </>:<div></div>
+}
+
 {
-    !isSignup &&
+    (phonelogin==true)&&(!isSignup) ?
+    <>
  <label htmlFor="phonenumber">
 
  <h4>Phoneno</h4>
@@ -167,6 +194,7 @@ isSignup&&
  <input value={phonenumber}  name="phonenumber" id="phonenumber" onChange={(e)=>{ChangeMobile(e.target.value)}} placeholder="phone number" />
 
 </label>
+</>:<div></div>
 }
    
     
@@ -189,20 +217,28 @@ verify?
     <input type="button" value="verifyotp" onClick={verifycode} style={{backgroundColor:"blue",width:"100px"}}/>
     </>:<div></div>
 }
+
+
+
     <label htmlFor="password">
 <div >
-        <h4>Password</h4>
-        
+{(phonelogin==false)?
+        <h4>Password</h4>:<h4></h4>
+    }       
 
         </div>
-        <input type="text" name="password"id="password" onChange={(e)=>{setpassword(e.target.value)}}/>
-
+        { (phonelogin==false)?
+        <input type="text" name="password"id="password" onChange={(e)=>{setpassword(e.target.value)}}/>:<p></p>
+}
         {
     isSignup&&<p>password must contain at least eight characters 1 number and 1 special characters</p>
 
    }
 
-{!isSignup&&<h4>forgot password</h4>}
+
+
+
+
     </label>
 {
     isSignup&&
@@ -228,6 +264,7 @@ verify?
     }
 </p>
 <button type="button" className='handle-switch-btn'onClick={handleswitch}>{isSignup?'login':'signup'}</button>
+<button type="button" className='handle-switch-btn'onClick={handlephonelogin}>login using phoneno</button>
 </div>
 
 

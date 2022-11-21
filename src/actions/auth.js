@@ -25,3 +25,17 @@ console.log(authData)
     console.log(err)
 }
 }
+
+
+export const login2=(authData,navigate)=>async(dispatch)=>{
+try{
+    const {data}=await api.logIn2(authData)
+console.log(authData)
+    dispatch({type:'AUTH',data})
+    dispatch(setcurrentUser(JSON.parse(localStorage.getItem('Profile'))))
+//console.log(data)
+    navigate('/')
+}catch(err){
+    console.log(err)
+}
+}
