@@ -162,7 +162,7 @@ isSignup&&
     !isSignup &&
  <label htmlFor="phonenumber">
 
- <h4>Phoneno(add +91 and then enter the phonenumber)</h4>
+ <h4>Phoneno</h4>
 
  <input value={phonenumber}  name="phonenumber" id="phonenumber" onChange={(e)=>{ChangeMobile(e.target.value)}} placeholder="phone number" />
 
